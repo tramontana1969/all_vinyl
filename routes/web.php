@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 Route::get('/', [App\Http\Controllers\Models\VinylController::class, 'all']);
 Route::post('/', [App\Http\Controllers\Models\VinylController::class, 'add']);
+Route::get('/{id}', [App\Http\Controllers\Models\VinylController::class, 'one']);

@@ -43,4 +43,9 @@ class VinylController extends Controller
         $vinyl->save();
         return redirect()->refresh();
     }
+
+    public function one($id) {
+        $vinyl = Vinyl::find($id);
+        return view('one_vinyl', ['vinyl' => $vinyl]);
+    }
 }
