@@ -79,33 +79,6 @@
         </div>
     </div>
 </section>
-
-
-<form method="post" enctype="multipart/form-data">
-    @csrf
-    <label for="author">author    </label>
-        <input type="text" name="author"/>
-
-    <label for="name">name    </label>
-        <input type="text" name="name"/>
-
-    <label for="price">price    </label>
-        <input type="number" name="price"/>
-
-    <label for="year">year    </label>
-        <input type="number" name="year"/>
-
-    <label for="description">description    </label>
-        <input type="text" name="description"/>
-
-    <input type="submit" value="add"/>
-    <label for="cover">cover    </label>
-        <input type="file" name="cover"/>
-
-</form>
-
-
-
 <!-- Footer-->
 <footer class="py-5 bg-dark">
     <div class="container"><p class="m-0 text-center text-black">By Tramonatana</p></div>

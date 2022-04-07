@@ -28,9 +28,7 @@ class VinylController extends Controller
                 ]
             );
         }
-        $image = $request->file('image');
         $filename = $data['cover']->getClientOriginalName();
-
         $data['cover']->move(Storage::path('public/vinyls/covers/').'origin/', $filename);
         $thumbnail = Image::make(Storage::path('public/vinyls/covers/').'origin/'.$filename);
         $thumbnail->fit(300, 300);
