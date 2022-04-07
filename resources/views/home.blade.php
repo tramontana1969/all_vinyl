@@ -51,32 +51,61 @@
         </div>
     </div>
 </header>
-<!-- Section-->
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Product image-->
-                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Fancy Product</h5>
-                            <!-- Product price-->
-                            $40.00 - $80.00
+            @foreach($vinyls as $vinyl)
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <img class="card-img-top" src="{{Storage::url('public/vinyls/covers/thumbnail/'.$vinyl->cover)}}" alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h4 class="fw-bolder">{{$vinyl['author']}}</h4>
+                                <h5 class="fw-bolder">{{$vinyl['name']}}</h5>
+                                <!-- Product price-->
+                                {{$vinyl['price']}}
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
                         </div>
                     </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                    </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
+
+
+<form method="post" enctype="multipart/form-data">
+    @csrf
+    <label for="author">author    </label>
+        <input type="text" name="author"/>
+
+    <label for="name">name    </label>
+        <input type="text" name="name"/>
+
+    <label for="price">price    </label>
+        <input type="number" name="price"/>
+
+    <label for="year">year    </label>
+        <input type="number" name="year"/>
+
+    <label for="description">description    </label>
+        <input type="text" name="description"/>
+
+    <input type="submit" value="add"/>
+    <label for="cover">cover    </label>
+        <input type="file" name="cover"/>
+
+</form>
+
+
+
 <!-- Footer-->
 <footer class="py-5 bg-dark">
     <div class="container"><p class="m-0 text-center text-black">By Tramonatana</p></div>

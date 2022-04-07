@@ -11,9 +11,11 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
     zip \
     unzip
-
+RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
