@@ -45,7 +45,7 @@ class VinylController extends Controller
     }
 
     public function one($id) {
-        $vinyl = Vinyl::find($id);
+        $vinyl = Vinyl::findOrFail($id);
         return view('one_vinyl', ['vinyl' => $vinyl]);
     }
 }

@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
 Route::get('/', [App\Http\Controllers\Models\VinylController::class, 'all']);
 Route::post('/', [App\Http\Controllers\Models\VinylController::class, 'add']);
-Route::get('/{id}', [App\Http\Controllers\Models\VinylController::class, 'one']);
+Route::get('/vinyl/{id}', [App\Http\Controllers\Models\VinylController::class, 'one']);
