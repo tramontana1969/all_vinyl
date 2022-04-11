@@ -30,9 +30,9 @@ class CreateVinylsTable extends Migration
                 $table->char('author', 64);
                 $table->char('name', 64);
                 $table->string('cover');
-                $table->integer('price');
+                $table->float('price');
                 $table->integer('year');
-                $table->mediumText('description');
+                $table->longText('description');
             });
         }
     }
@@ -44,6 +44,6 @@ class CreateVinylsTable extends Migration
      */
     public function down()
     {
-        Schema::dropColumns('vinyls', ['author', 'name', 'cover', 'price', 'year', 'description']);
+        Schema::dropIfExists('vinyls');
     }
 }
