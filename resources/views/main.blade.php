@@ -40,6 +40,13 @@
                     <span class="badge bg-dark-cart text-white ms-1 rounded-pill">0</span>
                 </button>
             </form>
+            <ul class="navbar-nav mb-2 mb-lg-0 ms-lg-4">
+            @guest
+                <li class="nav-item active"><a class="nav-link" href="/redirect">Sign in</a></li>
+            @else
+                <li class="nav-item active"><a class="nav-link" href="/account">{{ Auth::user()->name }}</a></li>
+            @endguest
+            </ul>
         </div>
     </div>
 </nav>
