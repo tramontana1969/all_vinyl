@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="card-header">{{ __('Avatar') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -14,7 +14,11 @@
                             </div>
                         @endif
 
-                        {{ __('You are logged in!') }}
+                        <img src="default.jpg" style="width: 150px" class="rounded mx-auto d-block" alt="...">
+                    </div>
+                    <div class="card-header">{{ __('Name') }}</div>
+                    <div class="card-body">
+                        {{ (Auth::user()->name) }}
                     </div>
                 </div>
             </div>
