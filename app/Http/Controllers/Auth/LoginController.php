@@ -47,7 +47,25 @@ class LoginController extends Controller
      */
     public function redirectToProvider()
     {
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver('google')
+            ->scopes(['https://www.googleapis.com/auth/user.birthday.read'])
+            ->redirect();
+    }
+
+    protected function getBirthDate($user){
+        $token = $user->token;
+        $url = "https://people.googleapis.com/v1/people/{$user['id']}?personFields=birthdays,genders&key=AIzaSyAyM56DA1eJEBRVIA5G7lELUtg2VoS-cVE&access_token={$token}";
+        $data = file_get_contents($url);
+        $array = json_decode($data);
+        if (isset($array->birthdays['0']->date->year)) {
+            $year = $array->birthdays['0']->date->year;
+        }
+        else {
+            $year = $array->birthdays['1']->date->year;
+        }
+        $month = $array->birthdays['0']->date->month;
+        $day = $array->birthdays['0']->date->day;
+        return $year.'-'.$month.'-'.$day;
     }
 
     /**
@@ -71,6 +89,7 @@ class LoginController extends Controller
         $newUser->name            = $user->name;
         $newUser->email           = $user->email;
         $newUser->google_id       = $user->id;
+        $newUser->birthday       = $this->getBirthDate($user);
         $newUser->avatar          = $user->avatar;
         $newUser->avatar_original = $user->avatar_original;
         $newUser->save();            auth()->login($newUser, true);

@@ -20,6 +20,10 @@
                     <div class="card-body">
                         {{ (Auth::user()->name) }}
                     </div>
+                    <div class="card-header">{{ __('Birthday') }}</div>
+                    <div class="card-body">
+                        {{ (Auth::user()->birthday) }}
+                    </div>
                 </div>
             </div>
         </div>
