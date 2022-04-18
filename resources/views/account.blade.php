@@ -13,8 +13,11 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-
-                        <img src="default.jpg" style="width: 150px" class="rounded mx-auto d-block" alt="...">
+                        @if (Auth::user()->avatar == null)
+                            <img src="default.jpg" style="width: 150px" class="rounded mx-auto d-block" alt="...">
+                        @else
+                            <img src="{{Storage::url(Auth::user()->avatar)}}" style="width: 150px" class="rounded mx-auto d-block" alt="...">
+                        @endif
                     </div>
                     <div class="card-header">{{ __('Name') }}</div>
                     <div class="card-body">

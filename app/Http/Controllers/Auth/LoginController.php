@@ -57,12 +57,7 @@ class LoginController extends Controller
         $url = "https://people.googleapis.com/v1/people/{$user['id']}?personFields=birthdays,genders&key=AIzaSyAyM56DA1eJEBRVIA5G7lELUtg2VoS-cVE&access_token={$token}";
         $data = file_get_contents($url);
         $array = json_decode($data);
-        if (isset($array->birthdays['0']->date->year)) {
-            $year = $array->birthdays['0']->date->year;
-        }
-        else {
-            $year = $array->birthdays['1']->date->year;
-        }
+        $year = $array->birthdays['0']->date->year ?? $array->birthdays['1']->date->year;
         $month = $array->birthdays['0']->date->month;
         $day = $array->birthdays['0']->date->day;
         return $year.'-'.$month.'-'.$day;
@@ -90,8 +85,6 @@ class LoginController extends Controller
         $newUser->email           = $user->email;
         $newUser->google_id       = $user->id;
         $newUser->birthday       = $this->getBirthDate($user);
-        $newUser->avatar          = $user->avatar;
-        $newUser->avatar_original = $user->avatar_original;
         $newUser->save();            auth()->login($newUser, true);
     }
         return redirect()->to('/');
