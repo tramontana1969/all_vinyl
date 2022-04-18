@@ -7,7 +7,7 @@
     <meta name="author" content="" />
     <title>All Vinyl</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon1.ico" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon1.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -58,6 +58,17 @@
         </div>
     </div>
 </header>
+<br>
+<nav class="navbar navbar-expand-lg navbar-light" style="margin-bottom: -5rem">
+    <div class="container px-4 px-lg-5">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
 @section('content')
 @show
 <!-- Footer-->
