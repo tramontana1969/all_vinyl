@@ -20,6 +20,6 @@ Route::get('/redirect', [\App\Http\Controllers\Auth\LoginController::class, 'red
 Route::get('/callback', [\App\Http\Controllers\Auth\LoginController::class, 'handleProviderCallback']);
 
 Auth::routes();
-Route::get('/account', function () {
-    return view('account');
-});
+
+Route::get('/account', [App\Http\Controllers\Models\UserController::class, 'info']);
+Route::post('/user-update/{id}', [\App\Http\Controllers\Models\UserController::class, 'edit']);
