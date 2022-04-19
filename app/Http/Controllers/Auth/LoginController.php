@@ -54,7 +54,8 @@ class LoginController extends Controller
 
     protected function getBirthDate($user){
         $token = $user->token;
-        $url = "https://people.googleapis.com/v1/people/{$user['id']}?personFields=birthdays,genders&key=AIzaSyAyM56DA1eJEBRVIA5G7lELUtg2VoS-cVE&access_token={$token}";
+        $api_key = env('GOOGLE_API_KEY');
+        $url = "https://people.googleapis.com/v1/people/{$user['id']}?personFields=birthdays,genders&key={$api_key}&access_token={$token}";
         $data = file_get_contents($url);
         $array = json_decode($data);
         $year = $array->birthdays['0']->date->year ?? $array->birthdays['1']->date->year;
