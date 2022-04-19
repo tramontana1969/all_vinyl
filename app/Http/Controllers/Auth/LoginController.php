@@ -84,7 +84,8 @@ class LoginController extends Controller
         $newUser->name            = $user->name;
         $newUser->email           = $user->email;
         $newUser->google_id       = $user->id;
-        $newUser->birthday       = $this->getBirthDate($user);
+        $newUser->birthday        = $this->getBirthDate($user);
+        $newUser->avatar          = $user->avatar;
         $newUser->save();            auth()->login($newUser, true);
     }
         return redirect()->to('/');

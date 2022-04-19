@@ -13,14 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\Models\VinylController::class, 'all']);
-Route::post('/', [App\Http\Controllers\SearchController::class, 'search']);
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\Models\VinylController::class, 'store']);
 Route::get('/vinyl/{id}', [App\Http\Controllers\Models\VinylController::class, 'one']);
 
 Route::get('/redirect', [\App\Http\Controllers\Auth\LoginController::class, 'redirectToProvider']);
 Route::get('/callback', [\App\Http\Controllers\Auth\LoginController::class, 'handleProviderCallback']);
-
-Auth::routes();
 
 Route::get('/account', [App\Http\Controllers\Models\UserController::class, 'info']);
 Route::post('/user-update/{id}', [\App\Http\Controllers\Models\UserController::class, 'edit']);

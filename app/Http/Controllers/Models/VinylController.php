@@ -3,13 +3,19 @@
 namespace App\Http\Controllers\Models;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Search;
 use App\Models\Vinyl;
+use Illuminate\Http\Request;
 
 class VinylController extends Controller
 {
-    public function all() {
-        $vinyls = Vinyl::all();
-        return view('home', ['vinyls' => $vinyls]);
+    public function store(Request $request) {
+        $query = $request->input('query');
+        $vinyls = Search::find($query, ['name', 'author']);
+        if (count($vinyls) > 0) {
+            return view('home', ['vinyls' => $vinyls]);
+        }
+        return redirect('/');
     }
 
     public function one($id) {
