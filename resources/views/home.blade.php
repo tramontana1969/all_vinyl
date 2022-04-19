@@ -4,8 +4,7 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="margin-bottom: -5rem">
     <div class="container px-4 px-lg-5">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="d-flex" method="post">
-                @csrf
+            <form class="d-flex" method="get">
                 <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
@@ -24,15 +23,15 @@
                         <div class="card-body p-4">
                             <div class="text-center">
                                 <!-- Product name-->
-                                <h4 class="fw-bolder">{{$vinyl['author']}}</h4>
-                                <h5 class="fw-bolder">{{$vinyl['name']}}</h5>
+                                <h4 class="fw-bolder">{{$vinyl->author}}</h4>
+                                <h5 class="fw-bolder">{{$vinyl->name}}</h5>
                                 <!-- Product price-->
-                                ${{$vinyl['price']}}
+                                ${{$vinyl->price}}
                             </div>
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/vinyl/{{$vinyl['id']}}">View options</a></div>
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/vinyl/{{$vinyl->id}}">View options</a></div>
                         </div>
                     </div>
                 </div>
