@@ -59,16 +59,6 @@
     </div>
 </header>
 <br>
-<nav class="navbar navbar-expand-lg navbar-light" style="margin-bottom: -5rem">
-    <div class="container px-4 px-lg-5">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-    </div>
-</nav>
 @section('content')
 @show
 <!-- Footer-->

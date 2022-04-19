@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\Models\VinylController::class, 'all']);
+Route::post('/', [App\Http\Controllers\SearchController::class, 'search']);
 Route::get('/vinyl/{id}', [App\Http\Controllers\Models\VinylController::class, 'one']);
 
 Route::get('/redirect', [\App\Http\Controllers\Auth\LoginController::class, 'redirectToProvider']);
