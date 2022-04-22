@@ -16,4 +16,7 @@ class Vinyl extends Model
         'year',
         'description',
     ];
+    public function comment(){
+        return $this->hasMany(Comment::class);
+    }
 }
