@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Models;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Search;
+use App\Models\Comment;
 use App\Models\Vinyl;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,6 @@ class VinylController extends Controller
 
     public function one($id) {
         $vinyl = Vinyl::findOrFail($id);
-        return view('one_vinyl', ['vinyl' => $vinyl]);
+        return view('one_vinyl', ['vinyl' => $vinyl,]);
     }
 }

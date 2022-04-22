@@ -15,13 +15,13 @@ class UserController extends Controller {
         return view('account');
     }
 
-    private function convert($img) {
+    public static function convert($img) {
         $filename = $img->getClientOriginalName();
         $img->move(Storage::path('original/'), $filename);
         $thumbnail = Image::make(Storage::path('original/').$filename);
         $thumbnail->fit(300, 300);
         $thumbnail->save(Storage::path('public/').$filename);
-        return 'storage/'.$filename;
+        return '/storage/'.$filename;
     }
 
     public function edit(Request $request, $id) {

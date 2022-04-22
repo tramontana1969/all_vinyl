@@ -22,5 +22,41 @@
                 </div>
             </div>
         </div>
+        <div class="container mt-5">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8">
+                    @if(count($vinyl->comment) > 0)
+                        @foreach($vinyl->comment as $comment)
+                            <div class="headings d-flex justify-content-between align-items-center mb-3">
+                                <h5>Comments</h5>
+                            </div>
+                            <div class="card p-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="user d-flex flex-row align-items-center">
+                                        <img src="{{$comment->user->avatar}}" width="70" class="user-img rounded-circle mr-2">
+                                        <span style="padding-left: 10px">
+                                            <h6 class="font-weight-bold">{{$comment->user->name}}</h6>
+                                            <p class="font-weight-bold">{{$comment->text}}</p>
+                                        </span>
+                                    </div> <small>{{$comment->date}}</small>
+                                </div>
+                                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                                    <div class="reply px-4">
+                                        <small>Remove</small>
+                                        <span class="dots">|</span>
+                                        <small>Reply</small>
+                                    </div>
+                                    <div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="headings d-flex justify-content-between align-items-center mb-3">
+                            <h5>There are no comments yet</h5>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
     </section>
 @endsection

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Models\UserController;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
@@ -64,11 +66,19 @@ class LoginController extends Controller
         return $year.'-'.$month.'-'.$day;
     }
 
+    private function saveAvatar($img){
+        $contents = file_get_contents($img);
+        $name = basename($img);
+        Storage::put('public/'.$name, $contents);
+        return "/storage/$name";
+    }
+
     /**
      * Obtain the user information from Google.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function handleProviderCallback()
     {
         try {
@@ -86,7 +96,7 @@ class LoginController extends Controller
         $newUser->email           = $user->email;
         $newUser->google_id       = $user->id;
         $newUser->birthday        = $this->getBirthDate($user);
-        $newUser->avatar          = $user->avatar;
+        $newUser->avatar          = $this->saveAvatar($user->avatar);
         $newUser->save();            auth()->login($newUser, true);
     }
         return redirect()->to('/');
