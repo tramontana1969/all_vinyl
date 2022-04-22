@@ -21,6 +21,7 @@ class UserController extends Controller {
         $thumbnail = Image::make(Storage::path('original/').$filename);
         $thumbnail->fit(300, 300);
         $thumbnail->save(Storage::path('public/').$filename);
+        return 'storage/'.$filename;
     }
 
     public function edit(Request $request, $id) {
@@ -33,9 +34,8 @@ class UserController extends Controller {
                 'email' => 'required', 'unique:users',
                 'birthday' => 'nullable',
             ]);
-            isset($data['avatar']) ? $this->convert($data['avatar']) : $data['avatar'] = null;
-            $user->name = $data['name'];
-            isset($data['avatar']) ? $user->avatar = $data['avatar']->getClientOriginalName() : $user->avatar = $data['avatar'];
+            isset($data['avatar']) ?  $data['avatar']=$this->convert($data['avatar']) : $data['avatar'] = Auth::user()->avatar;
+            $user->name = $data['name'];$user->avatar = $data['avatar'];
             $user->email = $data['email'];
             $user->birthday = $data['birthday'];
             $user->save();
