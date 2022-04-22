@@ -17,6 +17,7 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\Models\VinylController::class, 'store']);
 Route::get('/vinyl/{id}', [App\Http\Controllers\Models\VinylController::class, 'one']);
+Route::post('/vinyl/{vinyl_id}/add_comment', [App\Http\Controllers\Models\CommentController::class, 'create']);
 
 Route::get('/redirect', [\App\Http\Controllers\Auth\LoginController::class, 'redirectToProvider']);
 Route::get('/callback', [\App\Http\Controllers\Auth\LoginController::class, 'handleProviderCallback']);

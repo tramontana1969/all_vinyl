@@ -26,10 +26,10 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-md-8">
                     @if(count($vinyl->comment) > 0)
+                        <div class="headings d-flex justify-content-between align-items-center mb-3">
+                            <h5>Comments</h5>
+                        </div>
                         @foreach($vinyl->comment as $comment)
-                            <div class="headings d-flex justify-content-between align-items-center mb-3">
-                                <h5>Comments</h5>
-                            </div>
                             <div class="card p-3">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="user d-flex flex-row align-items-center">
@@ -53,6 +53,23 @@
                     @else
                         <div class="headings d-flex justify-content-between align-items-center mb-3">
                             <h5>There are no comments yet</h5>
+                        </div>
+                    @endif
+                        <br>
+                    @if(Auth::user())
+                    <div style="margin-top: 20px">
+                        <form action="{{$vinyl->id}}/add_comment" method="post" >
+                            @csrf
+                            <div class="mb-3">
+                                <label for="text" class="form-label">Add Comment</label>
+                                <input style="height: 65px" type="text" name="text" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                    @else
+                        <div style="margin-top: 20px">
+                            <h6>Please, <a href="/redirect">Sign in</a> if you want to leave a comment</h6>
                         </div>
                     @endif
                 </div>

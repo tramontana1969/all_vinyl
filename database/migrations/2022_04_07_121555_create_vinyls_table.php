@@ -20,7 +20,7 @@ class CreateVinylsTable extends Migration
                 $table->string('cover');
                 $table->integer('price');
                 $table->integer('year');
-                $table->string('description');
+                $table->longText('description');
             });
         }
         else {

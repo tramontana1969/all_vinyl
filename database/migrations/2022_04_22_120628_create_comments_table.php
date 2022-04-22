@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('vinyl_id');
-            $table->string('text');
+            $table->longText('text');
             $table->date('date');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

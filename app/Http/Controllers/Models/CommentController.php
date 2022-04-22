@@ -9,19 +9,18 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    public static function create(Request $request){
+    public static function create(Request $request, $vinyl_id){
         if ($request->isMethod('post')) {
             $data = $request->validate([
                 'parent_id' => 'nullable',
-                'user_id' => 'required',
-                'vinyl_id' => 'required',
                 'text' => 'required',
-                'date' => 'required',
             ]);
             $data['user_id'] = Auth::user()->id;
-            $comment = new Comment($data);
-            $comment->save();
-            return redirect("vinyl/$comment->vinyl_id");
+            $data['vinyl_id'] = $vinyl_id;
+            $data['date'] = date('y-m-d');
         };
+        $comment = new Comment($data);
+        $comment->save();
+        return redirect("vinyl/$comment->vinyl_id");
     }
 }
