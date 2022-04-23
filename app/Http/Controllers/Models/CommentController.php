@@ -12,7 +12,6 @@ class CommentController extends Controller
     public static function create(Request $request, $vinyl_id){
         if ($request->isMethod('post')) {
             $data = $request->validate([
-                'parent_id' => 'nullable',
                 'text' => 'required',
             ]);
             $data['user_id'] = Auth::user()->id;
