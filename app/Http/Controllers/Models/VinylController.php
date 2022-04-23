@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Models;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Search;
-use App\Models\Comment;
 use App\Models\Vinyl;
 use Illuminate\Http\Request;
 
