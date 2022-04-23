@@ -1,5 +1,18 @@
 @extends('main')
 @section('content')
+    <style>
+        .btn-link {
+            border: none;
+            outline: none;
+            background: none;
+            cursor: pointer;
+            color: #0000EE;
+            padding: 0;
+            text-decoration: underline;
+            font-family: inherit;
+            font-size: inherit;
+        }
+    </style>
     <section class="py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
@@ -40,14 +53,22 @@
                                         </span>
                                     </div> <small>{{$comment->date}}</small>
                                 </div>
+                                @role('admin|user')
+                                @if(Auth::user()->id == $comment->user_id || Auth::user()->hasRole('admin'))
                                 <div class="action d-flex justify-content-between mt-2 align-items-center">
                                     <div class="reply px-4">
-                                        <small>Remove</small>
-                                        <span class="dots">|</span>
-                                        <small>Reply</small>
+                                        <small>
+                                            <form action='{{url("/vinyl/comment/$comment->id")}}' method="post" >
+                                                @method('delete')
+                                                {{csrf_field()}}
+                                                <button type="submit" class="btn-link">Remove</button>
+                                            </form>
+                                        </small>
                                     </div>
                                     <div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
                                 </div>
+                                @endif
+                                @endrole
                             </div>
                         @endforeach
                     @else
