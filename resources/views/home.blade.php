@@ -1,4 +1,16 @@
 @extends('main')
+
+@section('sort')
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sort by</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#!">Name</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#!">Price</a></li>
+        </ul>
+    </li>
+@endsection
+
 @section('content')
 <!-- Section-->
 <nav class="navbar navbar-expand-lg navbar-light" style="margin-bottom: -5rem">
