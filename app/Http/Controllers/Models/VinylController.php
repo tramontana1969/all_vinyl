@@ -11,8 +11,19 @@ class VinylController extends Controller
 {
     public function store(Request $request) {
         $query = $request->input('query');
+        $sort = $request->input('sort-by');
         $vinyls = Search::find($query, ['name', 'author']);
         if (count($vinyls) > 0) {
+            switch ($sort){
+                case null:
+                    break;
+                case 'name':
+                    $vinyls=$vinyls->sortBy('name');
+                    break;
+                case 'price':
+                    $vinyls=$vinyls->sortBy('price');
+                    break;
+            }
             return view('home', ['vinyls' => $vinyls]);
         }
         return redirect('/');
