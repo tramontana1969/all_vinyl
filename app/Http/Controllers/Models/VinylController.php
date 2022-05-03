@@ -9,10 +9,14 @@ use Illuminate\Http\Request;
 
 class VinylController extends Controller
 {
+    use Search;
+
     public function store(Request $request) {
-        $query = $request->input('query');
+        $this->query = $request->input('query');
+        $this->columns = ['name', 'author'];
+        $this->table = 'vinyls';
         $sort = $request->input('sort-by');
-        $vinyls = Search::find($query, ['name', 'author']);
+        $vinyls = $this->find();
         if (count($vinyls) > 0) {
             switch ($sort){
                 case null:
