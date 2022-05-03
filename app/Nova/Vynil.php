@@ -60,6 +60,10 @@ class Vynil extends Resource
                 ->sortable()
                 ->rules('required', 'integer'),
 
+            Text::make('quantity')
+                ->sortable()
+                ->rules('required', 'integer'),
+
             Image::make('cover')
                 ->disk('public')
                 ->maxWidth(150),

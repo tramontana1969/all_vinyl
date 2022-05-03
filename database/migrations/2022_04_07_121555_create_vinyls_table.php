@@ -21,6 +21,7 @@ class CreateVinylsTable extends Migration
                 $table->integer('price');
                 $table->integer('year');
                 $table->longText('description');
+                $table->integer('quantity');
             });
         }
         else {
@@ -33,6 +34,7 @@ class CreateVinylsTable extends Migration
                 $table->float('price');
                 $table->integer('year');
                 $table->longText('description');
+                $table->integer('quantity');
             });
         }
     }
