@@ -26,11 +26,15 @@
                     </div>
                     <p class="lead">{{$vinyl->description}}</p>
                     <div class="d-flex">
+                        @if ($vinyl->quantity > 0)
                         <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
                         <button class="btn btn-outline-dark flex-shrink-0" type="button">
                             <i class="bi-cart-fill me-1"></i>
                             Add to cart
                         </button>
+                        @else
+                            <h3 style="text-decoration: underline">Not in Stock</h3>
+                        @endif
                     </div>
                 </div>
             </div>
