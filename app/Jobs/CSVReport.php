@@ -32,8 +32,8 @@ class CSVReport implements ShouldQueue
     public function handle()
     {
         $vinyls = Vinyl::all();
-        $filename = date("Y-m-d H:i:s");
-        $report = fopen("$filename.csv", 'w+', '/reports');
+        $filename = date("Y-m-d_H:i:s");
+        $report = fopen('resources/'."$filename.csv", 'w+', '/reports');
         fputcsv($report, [
             'id',
             'name',
