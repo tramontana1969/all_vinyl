@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 
 trait Search {
-    public $table;
-    public $columns;
-    public $query;
+    public static $table;
+    public static $columns;
+    public static $query;
     public function find(){
-        $model = DB::table($this->table);
-        for ($i = 0; $i < count($this->columns); $i++) {
-            $model  ->orWhere($this->columns[$i], 'like', "%{$this->query}%");
+        $model = DB::table(self::$table);
+        for ($i = 0; $i < count(self::$columns); $i++) {
+            $model  ->orWhere(self::$columns[$i], 'like', '%'.self::$query.'%');
         }
         return $model->get();
     }

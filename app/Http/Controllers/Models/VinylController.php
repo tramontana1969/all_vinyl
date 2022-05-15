@@ -12,11 +12,11 @@ class VinylController extends Controller
     use Search;
 
     public function store(Request $request) {
-        $this->query = $request->input('query');
-        $this->columns = ['name', 'author'];
-        $this->table = 'vinyls';
+        Search::$query = $request->input('query');
+        Search::$columns = ['name', 'author'];
+        Search::$table = 'vinyls';
         $sort = $request->input('sort-by');
-        $vinyls = $this->find();
+        $vinyls = Search::find();
         if (count($vinyls) > 0) {
             switch ($sort){
                 case null:
