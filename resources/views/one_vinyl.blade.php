@@ -16,17 +16,17 @@
     <section class="py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
-                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{Storage::url($vinyl['cover'])}}" alt="..." /></div>
+                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{Storage::url($vinyl->cover)}}" alt="..." /></div>
                 <div class="col-md-6">
-                    <h2>{{$vinyl['author']}}</h2>
-                    <h5>{{$vinyl['year']}}</h5>
-                    <h1 class="display-5 fw-bolder">{{$vinyl['name']}}</h1>
+                    <h2>{{$vinyl->author}}</h2>
+                    <h5>{{$vinyl->year}}</h5>
+                    <h1 class="display-5 fw-bolder">{{$vinyl->name}}</h1>
                     <div class="fs-5 mb-5">
-                        <span>${{$vinyl['price']}}</span>
+                        <span>${{$vinyl->price}}</span>
                     </div>
-                    <p class="lead">{{$vinyl['description']}}</p>
+                    <p class="lead">{{$vinyl->description}}</p>
                     <div class="d-flex">
-                        @if ($vinyl['quantity'] > 0)
+                        @if ($vinyl->quantity > 0)
                         <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
                         <button class="btn btn-outline-dark flex-shrink-0" type="button">
                             <i class="bi-cart-fill me-1"></i>
@@ -42,11 +42,11 @@
         <div class="container mt-5">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-8">
-                    @if(count($vinyl['comment']) > 0)
+                    @if(count($vinyl->comment) > 0)
                         <div class="headings d-flex justify-content-between align-items-center mb-3">
                             <h5>Comments</h5>
                         </div>
-                        @foreach($vinyl['comment'] as $comment)
+                        @foreach($vinyl->comment as $comment)
                             <div class="card p-3">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="user d-flex flex-row align-items-center">
@@ -83,7 +83,7 @@
                         <br>
                     @if(Auth::user())
                     <div style="margin-top: 20px">
-                        <form action="{{$vinyl['id']}}/add_comment" method="post" >
+                        <form action="{{$vinyl->id}}/add_comment" method="post" >
                             @csrf
                             <div class="mb-3">
                                 <label for="text" class="form-label">Add Comment</label>

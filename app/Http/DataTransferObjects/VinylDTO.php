@@ -9,6 +9,16 @@ use Spatie\DataTransferObject\DataTransferObject;
 
 final class VinylDTO extends DataTransferObject {
 
+    public $id;
+    public $author;
+    public $name;
+    public $cover;
+    public $price;
+    public $year;
+    public $quantity;
+    public $comment;
+    public $description;
+
     use Search;
 
     public static function vinylRequest(Request $request) {
@@ -34,7 +44,7 @@ final class VinylDTO extends DataTransferObject {
     }
 
     public static function singleVinyl(Vinyl $vinyl){
-        return [
+        return new self([
             'id' => $vinyl->id,
             'author' => $vinyl->author,
             'name' => $vinyl->name,
@@ -43,7 +53,7 @@ final class VinylDTO extends DataTransferObject {
             'year' => $vinyl->year,
             'quantity' => $vinyl->quantity,
             'comment' => $vinyl->comment,
-            'description' => $vinyl->description,
-        ];
+            'description' => $vinyl->description,]
+        );
     }
 }
